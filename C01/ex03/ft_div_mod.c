@@ -22,7 +22,7 @@ int main(void)
     int mod = 0;
 	ft_div_mod( a, b, &div, &mod );
 	//if work shows div = 2 mod = 1
-    char c[] = "div = 2 -> mod = 1\n";
+    char c[] = "div = 0 -> mod = 0\n";
     c[6] = div + '0';
     c[17] = mod + '0';
 	write(1, &c, 19);
