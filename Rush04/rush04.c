@@ -1,10 +1,6 @@
 #include <unistd.h>
 
 void rush(int width, int height) {
-    if (height == 1 && width == 1) {
-        write(1, "A\n", 3);
-        return;
-    }
     //width
     int j;
     //height
@@ -33,7 +29,7 @@ void rush(int width, int height) {
 int main(void)
 {
     write(1, "01\n", 3);
-    rush(5,3);
+    rush(1,1);
 
     write(1, "02\n", 3);
     rush(1,5);
