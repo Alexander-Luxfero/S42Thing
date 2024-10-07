@@ -1,4 +1,8 @@
-#include <stdio.h>
+
+int is_alpha(char c)
+{
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
 
 char *ft_strcapitalize(char *str)
 {
@@ -7,14 +11,17 @@ char *ft_strcapitalize(char *str)
 
     while (str[i] != '\0')
     {
-        if (first_char != 0 && (str[i] < '9' && str[i] > '0')) {
-            first_char = 0;
-        } else if (first_char != 0 && (str[i] >= 'a' && str[i] <= 'z')){
-            str[i] = str[i] - 32;
-            first_char = 0;
-        } else if ( str[i] >= 'A' && str[i] <= 'Z'){
-            str[i] = str[i] + 32;
-        } else if (str[i] == ' ' || str[i] == '+' || str[i] == '-'){
+        if (is_alpha(str[i]))
+        {
+            if (first_char && str[i] >= 'a' && str[i] <= 'z') {
+                str[i] -= 32;
+                first_char = 0;
+            } else if (!first_char && str[i] >= 'A' && str[i] <= 'Z') {
+                str[i] += 32;
+            } else {
+                first_char = 0;
+            }
+        } else if (!(str[i] >= '0' && str[i] <= '9')) {
             first_char = 1;
         }
         i++;
@@ -22,13 +29,16 @@ char *ft_strcapitalize(char *str)
     return str;
 }
 /*
+#include <stdio.h>
+#include <string.h>
 //Test
 int main(void)
 {
     //If Ok print 0 first time and 1 second!
-    char text[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+    char text[] = "salut, comMEnt tu vas ? 42mots quarante-deux; cinquante+et+un";
+    char correct[] = "Salut, Comment Tu Vas ? 42mots Quarante-Deux; Cinquante+Et+Un";
     ft_strcapitalize(text);
-    printf("If OK: %s\n", text);
+    printf("%s\n", strcmp(text, correct) ? "OK!" : "KO!");
     return (0);
 }
 */

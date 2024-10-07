@@ -21,7 +21,7 @@ unsigned int ft_strlcat(char *dest, char *src, unsigned int size) {
     dest[length_dest + i] = '\0';
     return length_dest + length_src;
 }
-/*
+
 #include <stdio.h>
 #include <string.h>
 
