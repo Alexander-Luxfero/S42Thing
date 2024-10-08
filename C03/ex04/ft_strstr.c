@@ -1,26 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 12:33:43 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/07 12:35:52 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //Ищем to_find в основной строке str, если нет то вернём NULL
-char *ft_strstr(char *str, char *to_find)
-{   
-    if (!*to_find) 
-        return (char *)str; 
+char	*ft_strstr(char *str, char *to_find)
+{
+	char	*cont_str;
+	char	*cont_find;
 
-    while (*str)
-    {
-        char *cont_str = str;
-        char *cont_find = to_find;
-        //If exist cont str&find and find in str, go thrue before end of this part
-        while (*cont_str && *cont_find && *cont_find == *cont_str)
-        {
-            cont_str++;
-            cont_find++;
-        }
-        
-        if (!*cont_find) 
-            return (char *)str;
-
-        str++;
-    }
-    return (0);
+	if (!*to_find)
+		return ((char *)str);
+	while (*str)
+	{
+		cont_str = str;
+		cont_find = to_find;
+		while (*cont_str && *cont_find && *cont_find == *cont_str)
+		{
+			cont_str++;
+			cont_find++;
+		}
+		if (!*cont_find)
+			return ((char *)str);
+		str++;
+	}
+	return (0);
 }
 /*
 #include <stdio.h>

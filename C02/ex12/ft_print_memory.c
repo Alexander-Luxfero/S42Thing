@@ -1,77 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/08 12:39:30 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/08 12:49:49 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void convert_to_hex(unsigned char ch)
+void	hex_address(unsigned long address)
 {
-    write( 1, &"0123456789abcdef"[ch / 16], 1);
-    write( 1, &"0123456789abcdef"[ch % 16], 1);
+	int	k;
+
+	k = 15;
+	while (k >= 0)
+	{
+		write(1, &"0123456789abcdef"[(address >> (4 * k)) & 0xf], 1);
+		k--;
+	}
+	write(1, ": ", 2);
 }
 
-void    hex_address(unsigned long address)
+void	print_data_hex(unsigned int i, unsigned int size, char *addr)
 {
-    int k;
+	unsigned int	j;
+	unsigned char	c;
+	char			hex[];
 
-    k = 15;
-    while (k >= 0) {
-        write( 1, &"0123456789abcdef"[(address >> (4 * k)) & 0xf], 1);
-        k--;
-    }
-    write(1, ": ", 2);
+	hex[16] = "0123456789abcdef";
+	j = 0;
+	while (j < 16)
+	{
+		if (i + j < size)
+			write(1, {hex[ch / 16], hex[ch % 16]}, 2);
+		else
+			write(1, "  ", 2);
+		if (j % 2 == 1)
+			write(1, " ", 1);
+		j++;
+	}
 }
 
-void    print_data(unsigned int i, unsigned int size, char *addr, int is_hex)
+void	print_data_text(unsigned int i, unsigned int size, char *addr)
 {
-    unsigned int j = 0;
+	unsigned int	j;
+	unsigned char	c;
 
-    if (is_hex)
-    {
-        while (j < 16)
-        {
-            if (i + j < size) {
-                convert_to_hex(((unsigned char *)addr)[i + j]);
-            } else {
-                write(1, "  ", 2);
-            }
-            if (j % 2 == 1) {
-                write(1, " ", 1);
-            }
-            j++;
-        }
-    } else {
-        while ( j < 16 && (i + j < size))
-        {
-            unsigned char c = ((unsigned char *)addr)[i + j];
-            if (c >= 32 && c <= 126) {
-                write(1, &c, 1);
-            } else {
-                write( 1, ".", 1);
-            }
-            j++;
-        }
-    }
-    
+	j = 0;
+	while (j < 16 && (i + j < size))
+	{
+		c = ((unsigned char *)addr)[i + j];
+		if (c >= 32 && c <= 126)
+			write(1, &c, 1);
+		else
+			write(1, ".", 1);
+		j++;
+	}
 }
 
-void ft_print_memory(void *addr, unsigned int size) {
-    unsigned int i = 0;
+void	ft_print_memory(void *addr, unsigned int size)
+{
+	unsigned int	i;
+	unsigned long	address;
 
-    while (i < size) {
-        // Print address
-        unsigned long address = (unsigned long)(addr + i);
-        hex_address(address);
-
-        // Print data in hex format
-        print_data(i, size, addr, 1);
-
-        print_data(i, size, addr, 0);
-        
-        write( 1, "\n", 1);
-        i += 16;
-    }
+	i = 0;
+	while (i < size)
+	{
+		address = (unsigned long)(addr + i);
+		hex_address(address);
+		print_data_hex(i, size, addr);
+		print_data_text(i, size, addr);
+		write(1, "\n", 1);
+		i += 16;
+	}
 }
 /*
 //Test
 int main(void) {
-    char str[] = "Bonjour les aminches\t\n\tc  est fou.tout.ce qu on peut faire avec...";
+    char s[]="Bonjour les aminches\t\n\tc est fou.tout.ce qu on peut avec...";
     ft_print_memory(str, 67); 
     return 0;
 }

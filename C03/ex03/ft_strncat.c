@@ -1,22 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 12:30:23 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/07 12:31:57 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strncat(char *dest, char *src, unsigned int nb)
-{   
-    unsigned int length_str1;
-    unsigned int i;
-    
-    length_str1 = 0;
-    while (dest[length_str1] != '\0')
-        length_str1++;
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
+{
+	unsigned int	length_str1;
+	unsigned int	i;
 
-    i = 0;
-    while (i < nb)
-    {
-        dest[length_str1 + i] = src[i];
-        i++;
-    }
-    dest[length_str1+i] = '\0';
-
-    return (dest);
+	length_str1 = 0;
+	while (dest[length_str1] != '\0')
+		length_str1++;
+	i = 0;
+	while (i < nb)
+	{
+		dest[length_str1 + i] = src[i];
+		i++;
+	}
+	dest[length_str1 + i] = '\0';
+	return (dest);
 }
 /*
 #include <stdio.h>

@@ -1,23 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/08 12:32:46 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/08 12:35:49 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-   unsigned int i = 0;
-   unsigned int length = 0;
+	unsigned int	i;
+	unsigned int	length;
 
-    while (src[length] != '\0')
-        length++;
-
-    if (size != 0)
-    {
-        while (src[i] != '\0' && i <= size )
-        {
-            dest[i] = src[i];
-            i++;
-        }
-        dest[i] = '\0';
-    }
-
-    return length++;
+	i = 0;
+	length = 0;
+	while (src[length] != '\0')
+		length++;
+	if (size != 0)
+	{
+		while (src[i] != '\0' && i <= size)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (length++);
 }
 /*
 #include <stdio.h>
@@ -32,8 +43,10 @@ int main(void)
 
     unsigned int length = ft_strlcpy(dest, src, 5);
     unsigned int length_std = strlcpy(dest_std, src, 5);
+    
+    int ans = strcmp(dest, dest_std);
 
-    printf("%s\n", (strcmp(dest, dest_std) && length == length_std) ? "OK!" : "KO!");
+    printf("%s\n", (ans == 1 && length == length_std) ? "OK!" : "KO!");
 
     printf("New string custom: %s\n", dest);
     printf("Length of previous std: %d\n", length);

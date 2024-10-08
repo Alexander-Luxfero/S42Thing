@@ -1,15 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/08 10:57:05 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/08 10:59:40 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-char *ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-    unsigned i = 0;
-    while (i < n && src[i] != '\0')
-    {
-        dest[i] = src[i];
-        i++; 
-    }
-    dest[i] = '\0';
-    return (dest);
+	unsigned int	i;
+
+	i = 0;
+	while (i < n && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++; 
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 /*
 #include <stdio.h>

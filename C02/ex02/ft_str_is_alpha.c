@@ -1,26 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/08 12:21:02 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/08 12:23:22 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-int is_alpha(char c, int start)
+int	is_alpha(char c, int start)
 {
-    if (c >= start && c <= start + 26)
-    {
-        return (1);
-    }
-    return (0);
+	if (c >= start && c <= start + 26)
+	{
+		return (1);
+	}
+	return (0);
 }
 
-int ft_str_is_alpha(char *str)
+int	ft_str_is_alpha(char *str)
 {
-    int i = 0;
-    while (str[i] != '\0')
-    {
-        if (!(is_alpha(str[i], 97) || is_alpha(str[i], 65) ))
-        {
-            return (0);
-        }
-        i++;
-    } 
-    return (1);
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!(is_alpha(str[i], 97) || is_alpha(str[i], 65)))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 /*
 //Test
