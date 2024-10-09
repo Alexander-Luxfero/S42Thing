@@ -15,42 +15,51 @@ int	ft_atoi(char *str)
 	int	i;
 	int	sign;
 	int	output;
-	int	starts_alpha;
+	int	stop;
 
 	i = 0;
 	output = 0;
 	sign = 1;
-	starts_alpha = 0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	stop = 0;
+	while (str[i] != '\0' && stop != 1)
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		while (str[i] == ' ')
+			i++;
+		while (str[i] == '-' || str[i] == '+')
+		{
+			if (str[i] == '-')
+				sign = -1;
+			i++;
+		}
+		if (str[i] >= '0' && str[i] <= '9')
+		{
+			while (str[i] >= '0' && str[i] <= '9')
+			{
+				output = output * 10 + (str[i] - '0');
+				i++;
+			}
+		}
+		else 
+		{
+			stop = 1;
+		}
+		i++;		
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		output = output * 10 + (str[i] - '0');
-		i++;
-	}
-	return ((int)(sign * output));
+	return ((sign * output));
 }
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	if (argc == 1)
-	{
-		char str[] = " ---+--+1234ab567";
-		printf("%s\n", (ft_atoi(str) == atoi(str) ? "OK!" : "KO!"));
-	} 
-	else if (argc == 2)
-	{
-		printf("%s\n", (ft_atoi(argv[1]) == atoi(argv[1]) ? "OK!" : "KO!"));
-	}
+	char str[] = " ---+--+1234ab567";
+	int custom = ft_atoi(str);
+	int standart = -1234;
+	printf("Custom output: %d\n", custom );
+	printf("Should be: %d\n", standart);
+	printf("%s\n", (custom == standart ? "OK!" : "KO!"));
+
 	return (0);
 }
-*/
+
