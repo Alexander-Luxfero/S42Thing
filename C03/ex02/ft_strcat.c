@@ -38,7 +38,8 @@ int main(void)
     char str3[36] = "String first, ";
     ft_strcat(str1, str2);
     strcat(str3, str2);
-    
+    printf("%s\n",str1);
+    printf("%s\n",str1);
     printf("%s", strcmp(str1, str3) == 0 ? "OK!\n" : "KO!\n");
 
     return (0);

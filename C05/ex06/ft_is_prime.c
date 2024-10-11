@@ -20,10 +20,10 @@ int ft_is_prime(int nb)
         return (1);
     return (0);
 }
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
-
+//1,2,3,5,7,11,13,17,19 
 int main(int argc, char *argv[])
 {
     if (argc == 2)
@@ -35,4 +35,3 @@ int main(int argc, char *argv[])
     }
     return (0);
 }
-*/

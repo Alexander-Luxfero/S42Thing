@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:43:59 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/07 12:46:02 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/10 17:47:44 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 }
 /*
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
 
 int main() {
     char str1[50] = "String first, ";
     char str2[] = "concated with second, and this is gone.";
-    int len = 36;
+   
 
-    unsigned int custom = ft_strlcat(str1, str2, len);
-
-    printf("%s", (custom) ? "OK!\n" : "KO!\n");
+    unsigned int custom = ft_strlcat(str1, str2, 36);
     printf("Custom result: %s|||END|||\n", str1);
+    printf("len: %d\n", custom);
+    
     return 0;
 }
 */
