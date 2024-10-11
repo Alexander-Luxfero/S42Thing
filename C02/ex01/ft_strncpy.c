@@ -17,15 +17,16 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-	while (i < n)
+	while (i < n && src[i] != '\0')
 	{
-		if (i < n && src[i] != '\0')
-			dest[i] = src[i];
-		else
-			dest[i] = '\0';
+		dest[i] = src[i];
 		i++;
 	}
-    dest[i] = '\0';
+        while (i < n)
+        {
+        	dest[i] = '\0';
+        	i++;
+	}
 	return (dest);
 }
 /*
@@ -34,9 +35,9 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 //Test
 int main(void)
 {
-    char text[] = "Where is the will, there is the way.";
-    char new[40];
-    char new1[40];
+    char text[] = "Where is a will, there is a way.";
+    char new[30];
+    char new1[30];
 
     ft_strncpy(new, text, 20);
     strncpy(new1, text, 20);
