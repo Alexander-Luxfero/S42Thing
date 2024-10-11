@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:30:23 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/07 12:31:57 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/10 17:26:00 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ int main(void)
     char str1[36] = "String first, ";
     char str2[] = "concated with second";
     char str3[36] = "String first, ";
-    ft_strncat(str1, str2, 8);
-    strncat(str3, str2, 8);
+    ft_strncat(str1, str2, 40);
+    strncat(str3, str2, 40);
     
+	printf("%s\n", str1);
+	printf("%s\n", str3);
     printf("%s", strcmp(str1, str3) == 0 ? "OK!\n" : "KO!\n");
 
     return (0);
