@@ -1,7 +1,36 @@
 #include <unistd.h>
 #include <stdlib.h>
+//get a size of int in string
+int grid_size(char *str)
+{
+    int size = 0;
+    while (*str)
+    {
+        if (*str >= '0' && *str <= '9')
+            size++;
+        str++;
+    }
+    return (size);
+}
 
-int **make_grid(unsigned int size)
+//get the size of grid and string, and convert it to regular array 
+// int temp[size] = {4,3,2,1,1,2,2,2,4,3,2,1,1,2,2,2}
+int *temp_def(int size, char *str)
+{
+    int i = 0;
+    int temp[size];
+    while (*str)
+    {
+        if (*str >= '0' && *str <= '9')
+        {
+            temp[i] = *str - '0';
+        }
+        str++;
+    }
+    return (temp);
+}
+
+int **make_grid(unsigned int size, int slide, int direction)
 {
     int **grid = malloc(size * sizeof(int *));
     if (!grid)
@@ -15,7 +44,7 @@ int **make_grid(unsigned int size)
 
         for (unsigned int j = 0; j < size; j++)
         {
-            grid[i][j] = ((j + i) % size) + 1;
+            grid[i][j] = (direction * (j + i + slide) % size) + 1;
         }
     }
     return grid;
@@ -44,7 +73,7 @@ int main(int argc, char *argv[])
         if (size <= 0)
             return 1; 
 
-        int **grid = make_grid(size); 
+        int **grid = make_grid(size, 0, -1); 
         if (!grid)
             return 1;
         print_grid(grid, size); 
