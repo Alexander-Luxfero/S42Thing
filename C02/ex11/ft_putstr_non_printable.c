@@ -19,7 +19,7 @@ void	ft_putstr_non_printable(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] > 32 && str[i] <= 126)
+		if (str[i] >= 32 && str[i] <= 126)
 		{
 			write(1, &str[i], 1);
 		}
@@ -32,11 +32,10 @@ void	ft_putstr_non_printable(char *str)
 		i++;
 	}
 }
-/*
+
 //Test
 int main(void){
     char text[] = "Coucou\ntu vas bien ?";
     ft_putstr_non_printable(text);
     return (0);
 }
-*/

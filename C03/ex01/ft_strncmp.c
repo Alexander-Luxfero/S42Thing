@@ -19,8 +19,9 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 	out = 0;
 	while (i < n)
 	{
+		out = s1[i] - s2[i];
 		if (s1[i] != s2[i])
-			out = (int)((unsigned char)*s1 - (unsigned char)*s2);
+			return (out);
 		i++;
 	}
 	return (out);
