@@ -15,10 +15,9 @@ int grid_size(char *str)
 
 //get the size of grid and string, and convert it to regular array 
 // int temp[size] = {4,3,2,1,1,2,2,2,4,3,2,1,1,2,2,2}
-int *temp_def(int size, char *str)
+int *temp_def(int length, char *str, int *temp)
 {
     int i = 0;
-    int temp[size];
     while (*str)
     {
         if (*str >= '0' && *str <= '9')

@@ -6,11 +6,9 @@
 /*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:57:05 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/08 10:59:40 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/13 17:49:33 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
@@ -22,10 +20,10 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i] = src[i];
 		i++;
 	}
-    while (i < n)
-    {
-        dest[i] = '\0';
-        i++;
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
 	}
 	return (dest);
 }
