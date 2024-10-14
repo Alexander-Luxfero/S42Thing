@@ -4,23 +4,20 @@
 
 int ft_is_prime(int nb)
 {
-    int prime;
     int i;
-    prime = 1;
+    
     i = 2;
-    if (nb == 1)
-        prime += 1;
-    while (i <= nb)
+    if (nb <= 1)
+        return (0);
+    while (i < nb)
     {
-        if (i == nb || nb%i == 0)
-            prime++;
+        if (nb%i == 0)
+            return (0);
         i++;
     }
-    if (prime == 2)
-        return (1);
-    return (0);
+    return (1);
 }
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 //1,2,3,5,7,11,13,17,19 
@@ -35,3 +32,4 @@ int main(int argc, char *argv[])
     }
     return (0);
 }
+*/

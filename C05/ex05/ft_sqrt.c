@@ -4,13 +4,11 @@ int ft_sqrt(int nb)
     if (nb > 0)
     {
         i = 1;
-        while (i*i < nb + 1)
+        while (i*i <= nb)
         {
             if (i*i == nb)
                 return (i);
             i++;
-            if (i*i > nb)
-                return (i-1);
         }
     }
     return (0);
