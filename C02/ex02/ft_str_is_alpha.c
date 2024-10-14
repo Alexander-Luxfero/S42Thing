@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	is_alpha(char c, int start)
+int	alf(char c, int start)
 {
 	if (c >= start && c <= start + 26)
 	{
@@ -28,13 +26,14 @@ int	ft_str_is_alpha(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (!(is_alpha(str[i], 97) || is_alpha(str[i], 65)))
+		if (!(alf(str[i], 97) || alf(str[i], 65)))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 /*
+#include <stdio.h>
 //Test
 int main(void)
 {

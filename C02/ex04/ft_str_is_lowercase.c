@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int	ft_str_is_lowercase(char *str)
 {
 	int	i;
@@ -26,6 +24,7 @@ int	ft_str_is_lowercase(char *str)
 	return (1);
 }
 /*
+#include <stdio.h>
 //Test
 int main(void)
 {
