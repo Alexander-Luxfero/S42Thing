@@ -95,7 +95,7 @@ int	ft_atoi_base(char *str, char *base)
 	}
 	return ((sign * output));
 }
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -110,4 +110,4 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
-
+*/

@@ -15,23 +15,24 @@
 void	ft_putnbr(int nb)
 {
 	char	val_to_print;
+	long long n = nb;
 
-	if (nb < 0)
+	if (n < 0)
 	{
 		write(1, "-", 1);
-		nb *= -1;
+		n *= -1;
 	}
 	
-	if (nb == 0)
+	if (n == 0)
 	{
 		write(1, "0", 1);
 		return;
 	}
 		
-	if (nb > 10)
-		ft_putnbr(nb/10);
+	if (n > 10)
+		ft_putnbr(n/10);
 		
-	val_to_print = (nb % 10) + '0';
+	val_to_print = (n % 10) + '0';
 	write(1, &val_to_print , 1);
 }
 /*
@@ -39,9 +40,9 @@ void	ft_putnbr(int nb)
 
 int	main(void)
 {
-	int number = 247;
+	long long number = -2147483648;
 	ft_putnbr(number);
 
-	printf("\n%x\n", number);
+	printf("\n%lld\n", number);
 }
 */

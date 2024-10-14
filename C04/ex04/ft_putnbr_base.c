@@ -57,14 +57,18 @@ int	check_err(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
+	long long nb = nbr;
+	int	sign;
 	if (base_length(base) <= 1 || check_err(base) == 1)
 		return;
-	
-	if (nbr < 0)
+	sign = 1;
+	if (nb < 0)
 	{
-		write(1,"-", 1);
-		nbr = -1 * nbr; 
+		while (nb < 0)
+			sign = -1;
 	}
+	if (sign == -1)
+		write(1,"-", 1);
 	if (nbr/base_length(base) != 0)
 	{
 		ft_putnbr_base(nbr/base_length(base), base);
@@ -73,7 +77,7 @@ void	ft_putnbr_base(int nbr, char *base)
 		write(1, &base[nbr], 1);
 	}
 }
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -85,3 +89,4 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
+*/

@@ -12,18 +12,6 @@
 
 #include <unistd.h>
 
-void	putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	convert_to_hex(unsigned char ch)
-{
-	putchar('\\');
-	putchar("0123456789abcdef"[ch / 16]);
-	putchar("0123456789abcdef"[ch % 16]);
-}
-
 void	ft_putstr_non_printable(char *str)
 {
 	int	i;
@@ -32,9 +20,15 @@ void	ft_putstr_non_printable(char *str)
 	while (str[i] != '\0')
 	{
 		if (str[i] >= 32 && str[i] <= 126)
-			putchar(str[i]);
+		{
+			write(1, &str[i], 1);
+		}
 		else
-			convert_to_hex((unsigned char)str[i]);
+		{
+			write(1, "\\", 1);
+			write(1, &"0123456789abcdef"[str[i] / 16], 1);
+			write(1, &"0123456789abcdef"[str[i] % 16], 1);
+		}
 		i++;
 	}
 }

@@ -14,16 +14,16 @@ int	ft_atoi(char *str)
 {
 	int	i;
 	int	sign;
-	int	output;
+	long long	output;
 	int	stop;
 
 	i = 0;
 	output = 0;
 	sign = 1;
 	stop = 0;
-	while (str[i] != '\0' && stop != 1)
+	while (str[i] != '\0' && stop == 0)
 	{
-		while (str[i] == ' ')
+		while (str[i] == ' ' && output == 0)
 			i++;
 		while (str[i] == '-' || str[i] == '+')
 		{
@@ -31,23 +31,18 @@ int	ft_atoi(char *str)
 				sign = -1 * sign;
 			i++;
 		}
-		if (str[i] >= '0' && str[i] <= '9')
+		while (str[i] >= '0' && str[i] <= '9')
 		{
-			while (str[i] >= '0' && str[i] <= '9')
-			{
-				output = output * 10 + (str[i] - '0');
-				i++;
-			}
+			output = output * 10 + (str[i] - '0');
+			i++;
 		}
-		else 
-		{
+		if  (str[i] < '0' || str[i] > '9')
 			stop = 1;
-		}
 		i++;		
 	}
 	return ((sign * output));
 }
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -62,4 +57,4 @@ int main(void)
 
 	return (0);
 }
-
+*/

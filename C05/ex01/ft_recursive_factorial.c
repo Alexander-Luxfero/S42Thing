@@ -1,10 +1,13 @@
 int ft_recursive_factorial(int nb)
 {
+    int out;
+
     if (nb <= 0)
         return (0);
+    out = 1;
     if (nb > 1)
-        return (nb * ft_recursiv_factorial(nb-1));
-    return (nb);
+        out = nb * ft_recursiv_factorial(nb-1);
+    return (out);
 }
 /*
 #include <stdio.h>

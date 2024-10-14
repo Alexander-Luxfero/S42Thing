@@ -14,21 +14,18 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
 	int out;
-	i = 0;
-	
 
+	i = 0;
+	out = 0;
 	while (i < n)
 	{
-		out = (int)((unsigned char)*s1 - (unsigned char)*s2);
-		if (*s1 != *s2)
-			return (out);
-		s1++;
-		s2++;
+		if (s1[i] != s2[i])
+			out = (int)((unsigned char)*s1 - (unsigned char)*s2);
 		i++;
 	}
 	return (out);
 }
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -55,3 +52,4 @@ int main(void)
 
     return (0);
 }
+*/

@@ -4,9 +4,10 @@ int ft_iterative_factorial(int nb)
     int i;
 
     i = 1;
-    if (nb <= 0)
-        return (0);
-    if (nb >= 1)
+    
+    if (nb < 0)
+        output = 0;
+    if (nb >= 0)
     {
         output = 1;
         while (nb > i)
