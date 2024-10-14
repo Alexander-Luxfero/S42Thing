@@ -27,29 +27,27 @@ int	base_length(char *base)
 	int len;
 
 	len = 0;
-	while (base[len] != '\0')
+	while (*base)
+	{
 		len++;
+		base++;
+	}
 	return (len);
 }
 
 int	check_err(char *base)
 {
 	int	i;
-	int j;
 
+	if (base_length(base) <= 1)
+		return (1);
 	i = 0;
-	while (base[i] < base_length(base))
-	{
-		j = i + 1;
-		while (base[j] != '\0')
-		{
-			if (base[i] == base[j])
-				return (1);
-			else if (base[i] == '-' || base[j] == '+')
-				return (1);
-			else
-				j++;
-		}
+	while (i < base_length(base) - 1)
+	{	
+		if (base[i] == base[i + 1])
+			return (1);
+		if (base[i] == '-' || base[i] == '+')
+			return (1);
 		i++;
 	}
 	return (0);
@@ -57,35 +55,58 @@ int	check_err(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	long long nb = nbr;
-	int	sign;
-	if (base_length(base) <= 1 || check_err(base) == 1)
+	long long nb;
+	if (check_err(base) == 1)
 		return;
-	sign = 1;
+	nb = nbr;
 	if (nb < 0)
 	{
-		while (nb < 0)
-			sign = -1;
-	}
-	if (sign == -1)
+		nb = -1 * nb;
 		write(1,"-", 1);
-	if (nbr/base_length(base) != 0)
+	}		
+	if (nb/base_length(base) > 0)
 	{
-		ft_putnbr_base(nbr/base_length(base), base);
-		write(1, &base[nbr%base_length(base)], 1);
+		ft_putnbr_base(nb / base_length(base), base);
+		write(1, &base[nb % base_length(base)], 1);
 	} else {
-		write(1, &base[nbr], 1);
+		write(1, &base[nb], 1);
 	}
 }
 /*
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
-	int str = 'z';
-	ft_putnbr_base(str, argv[1]);
-	printf("\n");
+int main(void)
+{		
+	ft_putnbr_base(40, "poneyvif");
+	printf(" Expected: vp\n\n");
+
+	ft_putnbr_base(-12, "01");
+	printf(" Expected:-1100 \n\n");
+
+	ft_putnbr_base(2147483647, "0123456789abcdef");
+	printf(" Expected: 7fffffff\n\n");
+
+	ft_putnbr_base(123, "a");
+	printf(" Expected: \n\n");
+
+	ft_putnbr_base(-2147483648, "01");
+	printf(" Expected: -10000000000000000000000000000000\n\n");
+
+	ft_putnbr_base(123, "abccde");
+	printf(" Expected: \n\n");
+
+	ft_putnbr_base(123, "");
+	printf(" Expected: \n\n");
+
+	ft_putnbr_base(0, "01");
+	printf(" Expected: 0 \n\n");
+
+	ft_putnbr_base(53, "0123456789abcdef");
+	printf(" Expected: 35 \n\n");
+
+	ft_putnbr_base(894867, "0123456789");
+	printf(" Expected: 894867\n");
 
 	return (0);
 }

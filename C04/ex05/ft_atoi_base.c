@@ -99,14 +99,38 @@ int	ft_atoi_base(char *str, char *base)
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	//char str[] = "ffffff";
-	int custom = ft_atoi_base(argv[1], argv[2]);
-	int standart = -1234;
-	printf("Custom output: %d\n", custom );
-	//printf("Should be: %d\n", standart);
-	//printf("%s\n", (custom == standart ? "OK!" : "KO!"));
+	//
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nBase: %s\nOutput: %d\n", "101101", "01",\
+	ft_atoi_base("101101", "01"));
+	printf("%s\n", (ft_atoi_base("101101", "01") == 45 ? \
+	 "OK!" : "KO!"));
+	//
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nBase: %s\nOutput: %d\n", "ff", "0123456789abcdef",\
+	ft_atoi_base("ff", "0123456789abcdef"));
+	printf("%s\n", (ft_atoi_base("ff", "0123456789abcdef") == 255 ? \
+	 "OK!" : "KO!"));
+	//
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nBase: %s\nOutput: %d\n", "    +-14353", "0123456789",\
+	ft_atoi_base("    +-14353", "0123456789"));
+	printf("%s\n", (ft_atoi_base("    +-14353", "0123456789") == -14353 ? \
+	 "OK!" : "KO!"));
+	//
+	printf("\n////////////////////////////////////////////////////////////\n");	
+	printf("Input: %s\nBase: %s\nOutput: %d\n", "         ---10101001", "01",\
+	ft_atoi_base("         ---10101001", "01"));
+	printf("%s\n", (ft_atoi_base("         ---10101001", "01") == -169 ? \
+	 "OK!" : "KO!"));
+	//
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nBase: %s\nOutput: %d\n", "     +---59", \
+	"0123456789abcdef", ft_atoi_base("     +---59", "0123456789abcdef"));
+	printf("%s\n", (ft_atoi_base("     +---59", "0123456789abcdef") == -89 ? \
+	 "OK!" : "KO!"));
 
 	return (0);
 }
