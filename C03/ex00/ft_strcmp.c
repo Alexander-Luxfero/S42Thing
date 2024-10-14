@@ -12,13 +12,13 @@
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int out;
-	
+	int	out;
+
 	out = 0;
 	while (*s1 || *s2)
 	{
 		out = (int)((unsigned char)*s1 - (unsigned char)*s2);
-		if  (*s1 != *s2)
+		if (*s1 != *s2)
 			return (out);
 		s1++;
 		s2++;

@@ -10,24 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	str_length(char *str)
-{
-	unsigned int	length;
-
-	length = 0;
-	while (str[length] != '\0')
-		length++;
-	return (length);
-}
-
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	length_dest;
 	unsigned int	length_src;
 	unsigned int	i;
 
-	length_dest = str_length(dest);
-	length_src = str_length(src);
+	length_src = 0;
+	while (src[length_src] != '\0')
+		length_src++;
+	length_dest = 0;
+	while (dest[length_dest] != '\0')
+		length_dest++;
 	i = 0;
 	if (size <= length_dest)
 		return (size + length_src);
@@ -53,5 +47,4 @@ int main() {
     printf("len: %d\n", custom);
     
     return 0;
-}
-*/
+}*/

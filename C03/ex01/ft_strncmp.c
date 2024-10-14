@@ -6,14 +6,14 @@
 /*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 12:22:12 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/11 11:55:43 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/14 10:53:03 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
-	int out;
+	int				out;
 
 	i = 0;
 	out = 0;
