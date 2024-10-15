@@ -1,22 +1,34 @@
-int ft_iterative_power(int nb, int power)
-{
-    int output;
-    int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/15 15:42:17 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/15 15:43:48 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 1;
-    output = 0;
-    if (power == 0)
-        return (1);
-    if (power >= 1)
-    {
-        output = nb;
-        while (power > i)
-        {
-            output *= nb;
-            i++;
-        }
-    }
-    return (output);
+int	ft_iterative_power(int nb, int power)
+{
+	int	output;
+	int	i;
+
+	i = 1;
+	output = 0;
+	if (power == 0)
+		return (1);
+	if (power >= 1)
+	{
+		output = nb;
+		while (power > i)
+		{
+			output *= nb;
+			i++;
+		}
+	}
+	return (output);
 }
 /*
 #include <stdio.h>

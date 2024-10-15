@@ -1,33 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/15 15:52:28 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/15 15:54:32 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_is_prime(int nb)
+int	ft_is_prime(int nb)
 {
-    int i;
-    
-    i = 2;
-    if (nb <= 1)
-        return (0);
-    while (i < nb)
-    {
-        if (nb%i == 0)
-            return (0);
-        i++;
-    }
-    return (1);
+	int	i;
+
+	i = 2;
+	if (nb <= 1)
+		return (0);
+	while (i < nb)
+	{
+		if (nb % i == 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-int ft_find_next_prime(int nb)
+int	ft_find_next_prime(int nb)
 {
-    int prime;
+	int	prime;
 
-    prime = 0;
-    while (prime == 0)
-    {
-        if (ft_is_prime(nb) == 1)
-            prime = nb;
-        else
-            prime = ft_find_next_prime(nb + 1);
-    }
-    return (prime);
+	prime = 0;
+	while (prime == 0)
+	{
+		if (ft_is_prime(nb) == 1)
+			prime = nb;
+		else
+			prime = ft_find_next_prime(nb + 1);
+	}
+	return (prime);
 }
 /*
 #include <stdio.h>

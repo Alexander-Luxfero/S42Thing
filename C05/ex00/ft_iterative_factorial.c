@@ -1,22 +1,33 @@
-int ft_iterative_factorial(int nb)
-{
-    int output;
-    int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/15 15:39:06 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/10/15 15:40:50 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 1;
-    
-    if (nb < 0)
-        output = 0;
-    if (nb >= 0)
-    {
-        output = 1;
-        while (nb > i)
-        {
-            i++;
-            output = output * i;
-        }
-    }
-    return (output);
+int	ft_iterative_factorial(int nb)
+{
+	int	output;
+	int	i;
+
+	i = 1;
+	if (nb < 0)
+		output = 0;
+	if (nb >= 0)
+	{
+		output = 1;
+		while (nb > i)
+		{
+			i++;
+			output = output * i;
+		}
+	}
+	return (output);
 }
 /*
 #include <stdio.h>
