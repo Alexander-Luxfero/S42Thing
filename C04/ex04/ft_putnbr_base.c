@@ -6,25 +6,15 @@
 /*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:24:25 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/08 15:25:31 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/15 13:28:20 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-/*
-Как я понял это функция, которая получает на вход число и должна отоюразить его
-используя переданную систему счисления переданную как строку.
-Те мы передаём 25 и "0123456789abcdef"(база 16-тиричная).
-!!!!Обрабатывает негативные значения!!!!
-Если неправильные аргументы ничего не отображает
-пример неправильных аргументов:
-+1. base = 1 или пуст
-+2. base имеет повторения
-+3. base имеет + или -
-*/
+
 int	base_length(char *base)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*base)
@@ -43,7 +33,7 @@ int	check_err(char *base)
 		return (1);
 	i = 0;
 	while (i < base_length(base) - 1)
-	{	
+	{
 		if (base[i] == base[i + 1])
 			return (1);
 		if (base[i] == '-' || base[i] == '+')
@@ -55,20 +45,23 @@ int	check_err(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	long long nb;
+	long long	nb;
+
 	if (check_err(base) == 1)
-		return;
+		return ;
 	nb = nbr;
 	if (nb < 0)
 	{
 		nb = -1 * nb;
-		write(1,"-", 1);
-	}		
-	if (nb/base_length(base) > 0)
+		write(1, "-", 1);
+	}
+	if (nb / base_length(base) > 0)
 	{
 		ft_putnbr_base(nb / base_length(base), base);
 		write(1, &base[nb % base_length(base)], 1);
-	} else {
+	}
+	else
+	{
 		write(1, &base[nb], 1);
 	}
 }

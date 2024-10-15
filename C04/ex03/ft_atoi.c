@@ -6,55 +6,88 @@
 /*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:24:25 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/08 15:25:31 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/15 13:25:02 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
-	int	sign;
-	long long	output;
-	int	stop;
 
 	i = 0;
-	output = 0;
-	sign = 1;
-	stop = 0;
-	while (str[i] != '\0' && stop == 0)
-	{
-		while (str[i] == ' ' && output == 0)
-			i++;
-		while (str[i] == '-' || str[i] == '+')
-		{
-			if (str[i] == '-')
-				sign = -1 * sign;
-			i++;
-		}
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			output = output * 10 + (str[i] - '0');
-			i++;
-		}
-		if  (str[i] < '0' || str[i] > '9')
-			stop = 1;
-		i++;		
-	}
-	return ((sign * output));
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
-/*
+
+long long	get_output(char *str, long long output)
+{
+	while (*str >= '0' && *str <= '9')
+	{
+		output = output * 10 + (*str - '0');
+		str++;
+	}
+	return (output);
+}
+
+int	ft_atoi(char *str)
+{
+	int			i;
+	long	sign;
+	long	output;
+
+	i = 0;
+	sign = 1;
+	output = 0;
+	if (ft_strlen(str) == 0)
+		return (0);
+	while (*str && output == 0)
+	{
+		while (*str == ' ' && output == 0)
+			str++;
+		while (*str == '-' || *str == '+')
+		{
+			if (*str == '-')
+				sign = -1 * sign;
+			str++;
+		}
+		output = get_output(str, output);
+	}
+	output = sign * output;
+	return ((int)output);
+}
+
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
 {
-	char str[] = " ---+--+1234ab567";
-	int custom = ft_atoi(str);
-	int standart = -1234;
-	printf("Custom output: %d\n", custom );
-	printf("Should be: %d\n", standart);
-	printf("%s\n", (custom == standart ? "OK!" : "KO!"));
+	//
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nOutput: %d\n", "101101", ft_atoi("101101"));
+	printf("%s\n", (ft_atoi("101101") == 101101 ? "OK!" : "KO!"));
+	 
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nOutput: %d\n", " ---+--+1234ab567", ft_atoi(" ---+--+1234ab567"));
+	printf("%s\n", (ft_atoi(" ---+--+1234ab567") == -1234 ? "OK!" : "KO!"));
+	 //
+	 printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nOutput: %d\n", "+6789", ft_atoi("+6789"));
+	printf("%s\n", (ft_atoi("+6789") == 6789 ? "OK!" : "KO!"));
+	 
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nOutput: %d\n", "000123", ft_atoi("000123"));
+	printf("%s\n", (ft_atoi("000123") == 123 ? "OK!" : "KO!"));
+	
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nOutput: %d\n", "2147483648", ft_atoi("2147483648"));
+	printf("%s\n", (ft_atoi("2147483648") == -2147483648 ? "OK!" : "KO!"));
+	 
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nOutput: %d\n", "-0", ft_atoi("-0"));
+	printf("%s\n", (ft_atoi("0") == 0 ? "OK!" : "KO!"));
+	
 
 	return (0);
 }
-*/
+

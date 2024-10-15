@@ -14,26 +14,24 @@
 
 void	ft_putnbr(int nb)
 {
-	char	val_to_print;
-	long long n = nb;
+	char		val_to_print;
+	long long	n;
 
+	n = nb;
 	if (n < 0)
 	{
 		write(1, "-", 1);
 		n *= -1;
 	}
-	
 	if (n == 0)
 	{
 		write(1, "0", 1);
-		return;
+		return ;
 	}
-		
 	if (n > 10)
-		ft_putnbr(n/10);
-		
+		ft_putnbr(n / 10);
 	val_to_print = (n % 10) + '0';
-	write(1, &val_to_print , 1);
+	write(1, &val_to_print, 1);
 }
 /*
 #include <stdio.h>
