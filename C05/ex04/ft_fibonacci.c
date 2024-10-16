@@ -12,26 +12,27 @@
 
 int	ft_fibonacci(int index)
 {
+	int	x1;
+	int	x2;
 	int	i;
-	int	out[];
+	int	bucket;
 
 	if (index < 0)
 		return (-1);
 	i = 0;
-	while (i <= 1)
+	x1 = 0;
+	x2 = 1;
+	if (0 == index)
+		return (x1);
+	if (1 == index)
+		return (x2);
+	while (++i < index)
 	{
-		out[i] = i;
-		i++;
+		bucket = x2;
+		x2 = bucket + x1;
+		x1 = bucket;
 	}
-	if (index > 1)
-	{
-		while (i <= index)
-		{
-			out[i] = out[i - 1] + out[i - 2];
-			i++;
-		}
-	}
-	return (out[index]);
+	return (x2);
 }
 /*
 #include <stdio.h>

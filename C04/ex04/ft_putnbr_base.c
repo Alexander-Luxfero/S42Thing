@@ -17,27 +17,30 @@ int	base_length(char *base)
 	int	len;
 
 	len = 0;
-	while (*base)
-	{
+	while (base[len])
 		len++;
-		base++;
-	}
 	return (len);
 }
 
 int	check_err(char *base)
 {
 	int	i;
+	int	j;
 
 	if (base_length(base) <= 1)
 		return (1);
 	i = 0;
-	while (i < base_length(base) - 1)
+	while (base[i])
 	{
 		if (base[i] == base[i + 1])
 			return (1);
-		if (base[i] == '-' || base[i] == '+')
-			return (1);
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == '-' || base[i] == '+')
+				return (1);
+			j++;
+		}
 		i++;
 	}
 	return (0);
@@ -46,26 +49,23 @@ int	check_err(char *base)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	long long	nb;
+	int	b_len;
 
 	if (check_err(base) == 1)
 		return ;
 	nb = nbr;
+	b_len = base_length(base);
 	if (nb < 0)
 	{
 		nb = -1 * nb;
 		write(1, "-", 1);
 	}
-	if (nb / base_length(base) > 0)
-	{
-		ft_putnbr_base(nb / base_length(base), base);
-		write(1, &base[nb % base_length(base)], 1);
-	}
-	else
-	{
-		write(1, &base[nb], 1);
-	}
+	if (nb >= b_len)
+		ft_putnbr_base(nb / b_len, base);
+	write(1, &base[nb % b_len], 1);
 }
 /*
+
 #include <stdio.h>
 #include <stdlib.h>
 

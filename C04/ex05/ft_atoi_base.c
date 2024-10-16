@@ -30,15 +30,14 @@ int	check_err(char *base)
 		return (0);
 	while (i < base_l(base))
 	{
+		if (base[i] == '-' || base[j] == '+')
+			return (0);
 		j = i + 1;
 		while (base[j] != '\0')
 		{
 			if (base[i] == base[j])
 				return (0);
-			else if (base[i] == '-' || base[j] == '+')
-				return (0);
-			else
-				j++;
+			j++;
 		}
 		i++;
 	}
@@ -73,14 +72,19 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	if (check_err(base) == 0)
 		return (0);
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' && output == 0)
-		{
-			sign = -1;
-			i++;
-		}
-		output = calculate(str, base, i, output); 
+		if (calculate(str, base, i, output) == output && base_l(base) > 1)
+			break;
+		output = calculate(str, base, i, output);
 		i++;
 	}
 	return ((sign * output));

@@ -19,7 +19,7 @@ int	check_safe(int *grid, int row, int col)
 	i = 0;
 	while (i < row)
 	{
-		if (grid[i] == col || grid[col] == i || grid[row] == i)
+		if (grid[i] == col || grid[row] == col + i || grid[col] == row + i)
 			return (0);
 		i++;
 	}
@@ -66,7 +66,7 @@ void    place_quine(int *grid, int row, int *counter, int size)
 int	ft_ten_queens_puzzle(void)
 {
 	int	size;
-	int	grid[];
+	int	grid[size];
 	int	counter;
 	
 	counter = 0;
@@ -74,7 +74,7 @@ int	ft_ten_queens_puzzle(void)
 	place_quine(grid, 0, &counter, size);
 	return (counter);
 }
-/*
+
 #include <stdio.h>
 
 int main(void)
@@ -83,4 +83,3 @@ int main(void)
     printf("Total %d variation\n", count);
     return (0);
 }
-*/
