@@ -10,17 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-long long	get_output(char *str, long long output)
+long long	 get_output(char *str, long long output)
 {
 	while (*str >= '0' && *str <= '9')
 	{
@@ -32,23 +22,25 @@ long long	get_output(char *str, long long output)
 
 int	ft_atoi(char *str)
 {
-	long	sign;
+	int	sign;
 	long	output;
 
 	sign = 1;
 	output = 0;
 	if (ft_strlen(str) == 0)
 		return (0);
-	while (*str == 32 || (*str == '-' || *str == '+'))
+	while (*str == ' ' || *str == '-' || *str == '+' || *str == '/t' || *str == '/n' || *str == '/v' || *str == '/r')
 	{
 		if (*str == '-')
 			sign *= -1;
 		str++;
 	}
-	if (*str >= '0' && *str <= '9')
-		output = get_output(str, output);
-	output = sign * output;
-	return ((int)output);
+	while (*str >= '0' && *str <= '9')
+	{
+		output = output * 10 + (*str - '0');
+		str++;
+	}
+	return ((int)output * sign);
 }
 /*
 #include <stdio.h>
