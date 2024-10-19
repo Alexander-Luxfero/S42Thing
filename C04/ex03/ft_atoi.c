@@ -27,9 +27,8 @@ int	ft_atoi(char *str)
 
 	sign = 1;
 	output = 0;
-	if (ft_strlen(str) == 0)
-		return (0);
-	while (*str == ' ' || *str == '-' || *str == '+' || *str == '/t' || *str == '/n' || *str == '/v' || *str == '/r')
+	while (*str == ' ' || *str == '-' || *str == '+' || *str == '\t'\
+	|| *str == '\n' || *str == '\v' || *str == '\r')
 	{
 		if (*str == '-')
 			sign *= -1;
