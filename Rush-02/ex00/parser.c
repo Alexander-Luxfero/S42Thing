@@ -45,17 +45,12 @@ int	adding_nums(char *str, t_number *parsed)
 void	adding_str(char *str, t_number *parsed, unsigned int index)
 {
 	unsigned int	add_p;
-	unsigned int	string_starts;
 
 	add_p = 0;
-	string_starts = 0;
 	while (str[index] == ' ')
 		index++;
 	while (is_printable(str[index]) && str[index])
-	{
-		string_starts = 1;
 		parsed->p_num[add_p++] = str[index++];
-	}
 	parsed->p_num[add_p] = '\0';
 }
 

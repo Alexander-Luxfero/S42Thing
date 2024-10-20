@@ -41,5 +41,5 @@ int		ft_strcmp(char *s1, char *s2);
 unsigned int    length(char *str);
 
 void	func_hundreds(char *num); //420
-char	*get_substr(char *str, int start); //len is always 3 
+char	*get_substr(char *str, int start, unsigned int length); //len is always 3 
 unsigned int    length(char *str);
