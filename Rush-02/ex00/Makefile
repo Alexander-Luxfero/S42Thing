@@ -1,5 +1,5 @@
 NAME = rush-02
-SRCS = main.c read_dict.c parser.c utils.c
+SRCS = main.c read_dict.c parser.c utils.c morningstar.c print_lookup.c func_hundreds.c utils2.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra

@@ -12,10 +12,9 @@
 11     : eleven elf
 12: twelve
 13: thirteen
-14: fourteen
 15: fifteen1)
 16: sixteen
-17: seventeen
+    
 18: eighteen
 19: nineteen
 20: twenty
@@ -39,21 +38,4 @@
 1000000000000000000000000000000: nonillion
 1000000000000000000000000000000000: decillion
 1000000000000000000000000000000000000: undecillion
-
-456781 4 * 100000 LEN 6 -1 100 1000
-2000
-40 000
-4 222 000
-four [0..len-4]
-8: 12 000 000
-
-						
-
-40000 40 1000 FOURTY THOUSAND
-5
-{
-	3: 100
-	4: 1000
-	7 : 1000000
-
-}
+1000000000000000000000000000000000000000: dundundecillion
