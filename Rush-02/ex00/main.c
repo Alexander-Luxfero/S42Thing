@@ -44,11 +44,13 @@ static void	search_dict(t_data	*data)
 	parser(line, &data->parsed_num);
 	while (1)
 	{
+		
 		if (ft_strcmp(data->parsed_num.num, data->num) == 0)
 		{
 			ft_putstr(data->parsed_num.p_num);
 			break ;
 		}
+		printf("\nHERE\n");
 		line = read_dict(data->fd);
 		parser(line, &data->parsed_num);
 	}
@@ -81,7 +83,6 @@ static int	init(t_data *data, int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-
 	if (argc != 2 && argc != 3)
 	{
 		ft_putstr("Error, wrong arguments passed\n");
@@ -92,6 +93,7 @@ int	main(int argc, char **argv)
 		ft_putstr("Dict Error\n");
 		return (1);
 	}
+	
 	if (data.num[0] == '-')
 	{
 		ft_putstr("Error, wrong arguments passed\n");

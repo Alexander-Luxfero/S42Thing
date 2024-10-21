@@ -6,7 +6,7 @@
 /*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:24:25 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/17 19:40:33 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:21:17 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_atoi_base(char *str, char *base)
 	output = calculate(str, base);
 	return ((sign * output));
 }
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -106,24 +106,6 @@ int main(void)
 	printf("Input: %s\nBase: %s\nOutput: %d\nExpected: %d\n", "ff", "0123456789abcdef",\
 	ft_atoi_base("ff", "0123456789abcdef"), 255);
 
-	/*
-	printf("\n////////////////////////////////////////////////////////////\n");
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "    +-14353", "0123456789",\
-	ft_atoi_base("    +-14353", "0123456789"));
-	printf("%s\n", (ft_atoi_base("    +-14353", "0123456789") == -14353 ? \
-	 "OK!" : "KO!"));
-	//
-	printf("\n////////////////////////////////////////////////////////////\n");	
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "---0", "01",\
-	ft_atoi_base("---0", "01"));
-	printf("%s\n", (ft_atoi_base("---0", "01") == 0 ? \
-	 "OK!" : "KO!"));
-	//
-	printf("\n////////////////////////////////////////////////////////////\n");
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "     +---59", \
-	"0123456789abcdef", ft_atoi_base("     +---59", "0123456789abcdef"));
-	printf("%s\n", (ft_atoi_base("     +---59", "0123456789abcdef") == -89 ? \
-	 "OK!" : "KO!"));
-	*/
 	return (0);
 }
+*/
