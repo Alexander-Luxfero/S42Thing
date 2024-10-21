@@ -15,17 +15,19 @@
 void	ft_putnbr(int nb)
 {
 	char		val_to_print;
-	long long	n;
-
-	n = nb;
-	if (n < 0)
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	if (nb < 0)
 	{
 		write(1, "-", 1);
-		n = -n;
+		nb = -nb;
 	}
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	val_to_print = (n % 10) + '0';
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	val_to_print = (nb % 10) + '0';
 	write(1, &val_to_print, 1);
 }
 /*

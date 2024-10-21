@@ -10,16 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	 get_output(char *str, long long output)
-{
-	while (*str >= '0' && *str <= '9')
-	{
-		output = output * 10 + (*str - '0');
-		str++;
-	}
-	return (output);
-}
-
 int	ft_atoi(char *str)
 {
 	int	sign;
@@ -27,9 +17,8 @@ int	ft_atoi(char *str)
 
 	sign = 1;
 	output = 0;
-	if (ft_strlen(str) == 0)
-		return (0);
-	while (*str == ' ' || *str == '-' || *str == '+' || *str == '/t' || *str == '/n' || *str == '/v' || *str == '/r')
+	while (*str == ' ' || *str == '-' || *str == '+' || *str == '\t'\
+	|| *str == '\n' || *str == '\v' || *str == '\r')
 	{
 		if (*str == '-')
 			sign *= -1;
@@ -68,14 +57,14 @@ int main(void)
 	printf("\n////////////////////////////////////////////////////////////\n");
 	printf("Input: %s\nOutput: %d\n", "000123", ft_atoi("000123"));
 	printf("%s\n", (ft_atoi("000123") == 123 ? "OK!" : "KO!"));
-	
-	printf("\n////////////////////////////////////////////////////////////\n");
-	printf("Input: %s\nOutput: %d\n", "2147483648", ft_atoi("2147483648"));
-	printf("%s\n", (ft_atoi("2147483648") == -2147483648 ? "OK!" : "KO!"));
 ///
 	printf("\n////////////////////////////////////////////////////////////\n");
 	printf("Input: %s\nOutput: %d\n", "-2147483648", ft_atoi("-2147483648"));
 	printf("%s\n", (ft_atoi("-2147483648") == -2147483648 ? "OK!" : "KO!"));
+	
+	printf("\n////////////////////////////////////////////////////////////\n");
+	printf("Input: %s\nOutput: %d\n", "2147483647", ft_atoi("2147483647"));
+	printf("%s\n", (ft_atoi("2147483647") == 2147483647 ? "OK!" : "KO!"));
 	 
 	printf("\n////////////////////////////////////////////////////////////\n");
 	printf("Input: %s\nOutput: %d\n", "-0", ft_atoi("-0"));
