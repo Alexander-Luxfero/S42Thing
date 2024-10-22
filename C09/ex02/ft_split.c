@@ -26,7 +26,7 @@ int len_counter(char *str, char *charset)
     int len;
 
     len = 0;
-    while (str[len] != charset)
+    while (str[len] != charset[0] && *str)
         len++;
     if (len != 0)
         len++;
@@ -37,36 +37,42 @@ char **ft_split(char *str, char *charset)
 {
     int words;
     char *strinsert;
+    //
     int inwordc;
+    //
     char *substr_counter;
+    int word_len;
     int k; // For words
 
     k = 0;
     words = count_substr(str, charset);
+    printf("Words: %d\n", words);
     char **strings = malloc(sizeof(char *) * (words + 1));
-    while (*str)
+    while (k <= words)
     {
         substr_counter = charset;
-        strings[k] = malloc(sizeof(char) * 20);
+        word_len = len_counter(str, charset);
+        strings[k] = malloc(sizeof(char) * (word_len + 1));
         if (!strings[k])
             strings[k] = NULL;
+        
         inwordc = 0;
-        while (*str != *substr_counter)
+        while (*str != *substr_counter && inwordc < word_len)
         {
-            *strings[k] = *str;
+            strings[k][inwordc] = *str;
             str++;
-            //strings[k]++;
+            inwordc++;
         }
+        strings[k][inwordc] = '\0';
         while (*str == *substr_counter)
         {
             str++;
             substr_counter++;
         }
-        printf("%s\n", strings[k]);
-        if (!substr_counter)
-            k++;
+        printf("%s  k: %d\n", strings[k], k);
+        k++;
     }
-    strings[words + 1] = NULL;
+    strings[k] = NULL;
     return (strings);
 }
 
@@ -74,10 +80,11 @@ char **ft_split(char *str, char *charset)
 
 int main(void)
 {
-    char **result = ft_split("hello world 42", " ");
+    char **result = ft_split("hello world 42 school", " ");
     int i = 0;
     //printf("%d\n", count_substr("hello world 42, gold on the cillin", " "));
     while (result[i++] != NULL)
        printf("%s\n", result[--i]);
+    free(result);
     return (0);
 }
