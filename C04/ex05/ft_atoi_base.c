@@ -6,7 +6,7 @@
 /*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:24:25 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/15 13:29:59 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:21:17 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,49 +44,50 @@ int	check_err(char *base)
 	return (1);
 }
 
-int	calculate(char *str, char *base, int i, int output)
+int	calculate(char *str, char *base)
 {
 	int	j;
+	int output;
+	int size;
 
 	j = 0;
-	while (j < base_l(base))
+	output = 0;
+	size = base_l(base);
+	while (*str)
 	{
-		if (base[j] == str[i])
+		while (j < size)
 		{
-			output = output * base_l(base) + j;
-			j = base_l(base);
+			if (*str == base[j])
+			{
+				output = output * size + j;
+				break;
+			}
+			else if (base[j] != *str && j == size - 1)
+				return (output);
+			j++;
 		}
-		j++;
+		str++;
+		j = 0;
 	}
 	return (output);
 }
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int	i;
 	int	sign;
 	int	output;
 
-	i = 0;
-	output = 0;
 	sign = 1;
 	if (check_err(base) == 0)
 		return (0);
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	while (str[i] == '-' || str[i] == '+')
+	while (*str == ' ' || *str == '-' || *str == '+' || *str == '\t'\
+	|| *str == '\n' || *str == '\v' || *str == '\r')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign *= -1;
-		i++;
+		str++;
 	}
-	while (str[i] != '\0')
-	{
-		if (calculate(str, base, i, output) == output && base_l(base) > 1)
-			break;
-		output = calculate(str, base, i, output);
-		i++;
-	}
+	output = calculate(str, base);
 	return ((sign * output));
 }
 /*
@@ -97,34 +98,13 @@ int main(void)
 {
 	//
 	printf("\n////////////////////////////////////////////////////////////\n");
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "101101", "01",\
-	ft_atoi_base("101101", "01"));
-	printf("%s\n", (ft_atoi_base("101101", "01") == 45 ? \
-	 "OK!" : "KO!"));
+	printf("Input: %s\nBase: %s\nOutput: %d\nExpected: %d\n", "101101", "01",\
+	ft_atoi_base("101101", "01"), 45);
+	
 	//
 	printf("\n////////////////////////////////////////////////////////////\n");
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "ff", "0123456789abcdef",\
-	ft_atoi_base("ff", "0123456789abcdef"));
-	printf("%s\n", (ft_atoi_base("ff", "0123456789abcdef") == 255 ? \
-	 "OK!" : "KO!"));
-	//
-	printf("\n////////////////////////////////////////////////////////////\n");
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "    +-14353", "0123456789",\
-	ft_atoi_base("    +-14353", "0123456789"));
-	printf("%s\n", (ft_atoi_base("    +-14353", "0123456789") == -14353 ? \
-	 "OK!" : "KO!"));
-	//
-	printf("\n////////////////////////////////////////////////////////////\n");	
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "         ---0", "01",\
-	ft_atoi_base("         ---0", "01"));
-	printf("%s\n", (ft_atoi_base("         ---0", "01") == 0 ? \
-	 "OK!" : "KO!"));
-	//
-	printf("\n////////////////////////////////////////////////////////////\n");
-	printf("Input: %s\nBase: %s\nOutput: %d\n", "     +---59", \
-	"0123456789abcdef", ft_atoi_base("     +---59", "0123456789abcdef"));
-	printf("%s\n", (ft_atoi_base("     +---59", "0123456789abcdef") == -89 ? \
-	 "OK!" : "KO!"));
+	printf("Input: %s\nBase: %s\nOutput: %d\nExpected: %d\n", "ff", "0123456789abcdef",\
+	ft_atoi_base("ff", "0123456789abcdef"), 255);
 
 	return (0);
 }

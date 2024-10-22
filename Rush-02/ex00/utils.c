@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:49:12 by adeaconu          #+#    #+#             */
-/*   Updated: 2024/10/19 18:53:22 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/20 16:03:16 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -20,11 +38,15 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
+		{
 			return (s1[i] - s2[i]);
+		}
 		i++;
 	}
 	if (s1[i] || s2[i])
+	{
 		return (s1[i] - s2[i]);
+	}
 	return (0);
 }
 
@@ -40,12 +62,12 @@ void	ft_putstr(char *str)
 	}
 }
 
-unsigned int    length(char *str)
+int	ft_strlen(char *str)
 {
-    unsigned int    length;
+	int	i;
 
-    length = 0;
-    while (str[length])
-        length++;
-    return (length);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

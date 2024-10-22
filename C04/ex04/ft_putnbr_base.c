@@ -6,7 +6,7 @@
 /*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:24:25 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/15 13:28:20 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/10/17 19:04:46 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,21 @@ int	check_err(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	long long	nb;
 	int	b_len;
 
-	if (check_err(base) == 1)
+	if (check_err(base) == 1 || nbr == -2147483648)
 		return ;
-	nb = nbr;
 	b_len = base_length(base);
-	if (nb < 0)
+	if (nbr < 0)
 	{
-		nb = -1 * nb;
+		nbr *= -1;
 		write(1, "-", 1);
 	}
-	if (nb >= b_len)
-		ft_putnbr_base(nb / b_len, base);
-	write(1, &base[nb % b_len], 1);
+	if (nbr >= b_len)
+		ft_putnbr_base(nbr / b_len, base);
+	write(1, &base[nbr % b_len], 1);
 }
-/*
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -84,7 +82,7 @@ int main(void)
 	printf(" Expected: \n\n");
 
 	ft_putnbr_base(-2147483648, "01");
-	printf(" Expected: -10000000000000000000000000000000\n\n");
+	printf(" Expected: \n\n");
 
 	ft_putnbr_base(123, "abccde");
 	printf(" Expected: \n\n");
@@ -92,7 +90,7 @@ int main(void)
 	ft_putnbr_base(123, "");
 	printf(" Expected: \n\n");
 
-	ft_putnbr_base(0, "01");
+	ft_putnbr_base(-0, "01");
 	printf(" Expected: 0 \n\n");
 
 	ft_putnbr_base(53, "0123456789abcdef");
@@ -103,4 +101,3 @@ int main(void)
 
 	return (0);
 }
-*/

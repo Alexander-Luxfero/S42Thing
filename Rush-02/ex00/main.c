@@ -6,54 +6,24 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 10:53:13 by gikarcev          #+#    #+#             */
-/*   Updated: 2024/10/19 18:45:28 by gikarcev         ###   ########.fr       */
+/*   Updated: 2024/10/20 20:51:53 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-
-
-static void	search_dict(t_data	*data)
+int	check_sub_str(char *sub_str)
 {
-	char	*line;
-	//if len data->num 1 || if len 2 && data->num[0] < '2'
+	int	i;
 
-	//if len data->num == 2
-		//take data->num[0] add '0'
-		//look up and print the data->num[0] add '0' (40)
-		// take data->num[1], if its '0' skip
-			//look up and print
-
-	// if data->num len is == 3
-		// take data->num[0] look up and print
-		// look up and print 100
-		// pass the last 2 chars to len 2
-
-	// if data->num len is == 4
-		// take data->num[0] look up and print
-		// look up and print 1000
-		// pass the last 3 chars to len 3
-
-	// if data->num len is == 5
-		// take data->num[0] look up and print
-		// look up and print 1000
-		// pass the last 3 chars to len 3
-
-	line = read_dict(data->fd);
-	parser(line, &data->parsed_num);
-	while (1)
+	i = 0;
+	while (*sub_str)
 	{
-		
-		if (ft_strcmp(data->parsed_num.num, data->num) == 0)
-		{
-			ft_putstr(data->parsed_num.p_num);
-			break ;
-		}
-		printf("\nHERE\n");
-		line = read_dict(data->fd);
-		parser(line, &data->parsed_num);
+		if (*sub_str != '0')
+			i++;
+		sub_str++;
 	}
+	return (i);
 }
 
 static int	init(t_data *data, int argc, char **argv)
@@ -65,8 +35,8 @@ static int	init(t_data *data, int argc, char **argv)
 	}
 	else if (argc == 3)
 	{
-		data->dict = argv[2];
-		data->num = argv[1];
+		data->dict = argv[1];
+		data->num = argv[2];
 	}
 	data->parsed_num.num = (char *)malloc(512 * sizeof(char));
 	if (!data->parsed_num.num)
@@ -74,15 +44,29 @@ static int	init(t_data *data, int argc, char **argv)
 	data->parsed_num.p_num = (char *)malloc(512 * sizeof(char));
 	if (!data->parsed_num.p_num)
 		return (1);
-	data->fd = open(data->dict, O_RDONLY);
-	if (data->fd <= 0)
-		return (1);
+	data->word_count = 0;
+	data->result = (char **)malloc(((512 * sizeof(char)) \
+					* ft_strlen(data->num)) * 2);
+	data->dict_error = 0;
 	return (0);
+}
+
+void	free_mem(t_data	*data)
+{
+	int	i;
+
+	i = 0;
+	free(data->parsed_num.num);
+	free(data->parsed_num.p_num);
+	while (i <= data->word_count - 1)
+		free(data->result[i++]);
+	free(data->result);
 }
 
 int	main(int argc, char **argv)
 {
 	t_data	data;
+
 	if (argc != 2 && argc != 3)
 	{
 		ft_putstr("Error, wrong arguments passed\n");
@@ -93,12 +77,12 @@ int	main(int argc, char **argv)
 		ft_putstr("Dict Error\n");
 		return (1);
 	}
-	
 	if (data.num[0] == '-')
 	{
-		ft_putstr("Error, wrong arguments passed\n");
+		ft_putstr("Error\n");
 		return (1);
 	}
-	search_dict(&data);
+	morningstar(data.num, &data);
+	free_mem(&data);
 	return (0);
 }

@@ -3,163 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   morningstar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 18:48:50 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/10/19 19:03:54 by akuzmin          ###   ########.fr       */
+/*   Created: 2024/10/20 15:38:33 by gikarcev          #+#    #+#             */
+/*   Updated: 2024/10/20 20:57:54 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-
-
-/*
-void	func_hundreds(char *num); //420
-char	*get_substr(char *str, int start); //len is always 3 
-*/
-
-char	*power_of_10(unsigned int length)
+void	correction(int *div, unsigned int *mod, unsigned int len)
 {
-	char *output;
-	unsigned int i;
-
-	output[0] = '1';
-	i = 1;
-	while (i < length)
-	{
-		output[i] = '0';
-		i++;
-	}
-	return (output);
-}
-
-void	*correction(unsigned int *div, unsigned int	*mod, unsigned int	len)
-{
-	unsigned int difer;
-	if (mod == 0 && div >= 1)
+	if (*mod == 0 && (*div) >= 1)
 	{
 		*mod = 3;
-		div--;
+		*div = (*div) - 1;
 	}
-	difer = *div * 3 + *mod - len;
-	if (difer != 0)
+	if (((*div) * 3 + (*mod) - len) != 0)
 		*mod = 3;
 }
 
-char	*ft_strcat(char *dest, char *src)
+void	print_numbers(t_data *data)
 {
-	unsigned int	length_str1;
-	unsigned int	i;
+	int	i;
 
-	length_str1 = 0;
-	while (dest[length_str1] != '\0')
-		length_str1++;
 	i = 0;
-	while (src[i] != '\0')
+	while (i < data->word_count - 1)
 	{
-		dest[length_str1 + i] = src[i];
+		ft_putstr(data->result[i]);
+		ft_putstr(" ");
 		i++;
 	}
-	dest[length_str1 + i] = '\0';
-	return (dest);
+	ft_putstr(data->result[i]);
+	ft_putstr("\n");
 }
 
-void func_hundreds(char *str, t_data data)
+void	morningstar(char *str, t_data *data)
 {
-	unsigned int	len;
-	unsigned int	i;
-	char 			*sub_str;
-	//Length from 1 to 3
-	len = length(str);
-	//          012
-	// str[3] : 223
-	i = 0;
-	while (i < (len - 1))
-	{
-		if (i == 0 && len == 3)
-		{
-			if (str[i] != '0')
-			{
-				sub_str = get_substr(str, 0, 1);
-				search_dict(sub_str, data.parsed_num);
-				search_dict("100", data.parsed_num);
-			}
-			i++;
-		}
-		if (str[i] >= '2' && str[i] <= '9')
-		{
-			sub_str = ft_strcat(str[i], "0");
-			search_dict(sub_str, data.parsed_num);
-			i++;
-		}
-		else if (str[i] < '2')
-		{
-			sub_str = ft_strcat(str[i], str[len - i]);
-			search_dict(sub_str, data.parsed_num);
-			break;
-		}
-		if (str[i] >= '1' && str[i] <= '9')
-			search_dict(str[i], data.parsed_num);
-	}
-}
-
-void morningstar(char *str, t_data data)
-{
-	unsigned int	len;
-	unsigned int	div;
+	int				div;
 	unsigned int	mod;
-	char 			*sub_str;
+	char			*sub_str;
+	char			*value;
 
-	len = length(str);
-	div = len / 3; // 2
-	mod = len % 3; // 1
-	//          0 123 456
-	// str[7] : 2 032 006
+	div = ft_strlen(str) / 3;
+	mod = ft_strlen(str) % 3;
 	while (div >= 0)
 	{
-		
-		// correction if mod == 0, of if its not a first part
-		//1) div = 2, mod = 1  2) div = 1, mod = 3 3) div = 0, mod = 3
-		correction(div, mod, len);
-		sub_str = get_substr(str, (len - (div * 3 + mod)), mod); 
-		// 1) get_substr(str, 0, 1)     2) get_substr(str, 2, 3)   3) get_substr(str, 5, 3)
-		// Example for 12 032 234 1) --> two + 2) --> one hundret twenty three + 3) --> six + 
+		correction(&div, &mod, ft_strlen(str));
+		sub_str = get_substr(str, (ft_strlen(str) - (div * 3 + mod)), mod);
 		func_hundreds(sub_str, data);
-		if (div > 0)
-		//1)--> + million  2) --> + thousand  3) --> + NOTHING
-			search_dict(power_of_10(div * 3 + 1), data.parsed_num);
+		if (div > 0 && check_sub_str(sub_str) != 0)
+		{
+			value = power_of_10(div * 3 + 1);
+			lookup_print(data, value);
+			free(value);
+		}
 		div--;
+		free(sub_str);
 	}
-// second loop, div == 1, mod == 1
-// third loop, div == 0, mod == 3
+	if (data->dict_error == 0)
+		print_numbers(data);
+	else if (data->dict_error == 1)
+		ft_putstr("Dict Error\n");
 }
-
-/*
-12 321
-
-if len > 3 --> len/3 == 2* 1000 * 1000
-				len%3 == 2 
-str[9] : 102 032 234
-f len >= 9 -->  mod = len%3 == 0 --> func_hundrets(str[0..mod]) --> twenty three
-				div = len/3 == 3 times 1000
-				if (mod == 0) --> mod = 3; div--;
-				if div != 0 ->
-					i = len - div * 3 - 1
-                    
-					j_len = 3
-					while (div > 0)
-						func_hundrets(str[i,j_len]) give only start
-						div--;
-
-str[39] : 123 000 000 000 000 000 000 000 000 000 000 000 000: undecillion
-f len > 3 -->  mod = len%3 == 2 --> func_hundrets(str[0..mod]) --> twenty three
-				div = len/3 == 12 times 1000
-				if div != 0 ->
-					i = len - div * 3 - 1
-                    
-					j_len = 3
-					while (div > 0)
-						func_hundrets(str[i,j_len]) give only start
-						div--;
-*/
