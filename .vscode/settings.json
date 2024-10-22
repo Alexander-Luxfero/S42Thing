@@ -5,6 +5,7 @@
     "__locale": "c",
     "ios": "c",
     "ft_ten_queens_puzzle.C": "cpp",
-    "ft_boolean.h": "c"
+    "ft_boolean.h": "c",
+    "stdlib.h": "c"
   }
 }

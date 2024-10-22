@@ -23,7 +23,7 @@ long long	 get_output(char *str, long long output)
 int	ft_atoi(char *str)
 {
 	int	sign;
-	long	output;
+	int	output;
 
 	sign = 1;
 	output = 0;
@@ -39,7 +39,7 @@ int	ft_atoi(char *str)
 		output = output * 10 + (*str - '0');
 		str++;
 	}
-	return ((int)output * sign);
+	return (output * sign);
 }
 /*
 #include <stdio.h>

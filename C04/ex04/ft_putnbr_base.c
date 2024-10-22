@@ -37,7 +37,7 @@ int	check_err(char *base)
 		j = i + 1;
 		while (base[j])
 		{
-			if (base[i] == '-' || base[i] == '+')
+			if (base[i] <= 32 || base[i] == 127 || base[i] == '-' || base[i] == '+')
 				return (1);
 			j++;
 		}

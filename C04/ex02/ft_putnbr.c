@@ -15,19 +15,23 @@
 void	ft_putnbr(int nb)
 {
 	char		val_to_print;
-	long long	n;
 
-	n = nb;
-	if (n < 0)
+	if (nb <= -2147483648)
+	{
+		write(1, "-2147483648", 12);
+		return ;
+	}
+	if (nb < 0)
 	{
 		write(1, "-", 1);
-		n = -n;
+		nb *= -1;
 	}
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	val_to_print = (n % 10) + '0';
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	val_to_print = (nb % 10) + '0';
 	write(1, &val_to_print, 1);
 }
+
 /*
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,7 +44,9 @@ int	main(int argc, char *argv[])
 	{
 		while (++counter < argc)
 		{
-			ft_putnbr(atoi(argv[counter]));
+			int nb = atoi(argv[counter]);
+			//ft_putnbr(nb);
+			ft_putnbr1(nb);
 			write(1, "\n", 1);
 		}
 	}
