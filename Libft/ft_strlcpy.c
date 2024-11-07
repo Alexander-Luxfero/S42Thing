@@ -1,6 +1,8 @@
-unsigned int	ft_strlcpy(char * restrict dst, const char * restrict src, unsigned int dstsize)
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	i;
+	size_t i;
 
 	i = 0;
 	if (dstsize != 0)
