@@ -1,11 +1,11 @@
 #include "libft.h"
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	char *last_ocur;
+	char	*last_ocur;
 
 	last_ocur = 0;
-	while(*s)
+	while (*s)
 	{
 		if (*s == (char)c)
 			last_ocur = (char *)s;

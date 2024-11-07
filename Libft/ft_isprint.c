@@ -1,6 +1,8 @@
 #include "libft.h"
 
-int ft_isprint(int c)
+int	ft_isprint(int c)
 {
-	return ((c >= 40 && c <= 176) ? 1 : 0);
+	if (c >= 40 && c <= 176)
+		return (1);
+	return (0);
 }
