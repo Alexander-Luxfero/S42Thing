@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/07 23:39:31 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/11/07 23:39:31 by akuzmin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strdup(char *src)
 {
-    char	*copy;
-    int		length;
-    int		i;
+	char	*copy;
+	int		length;
+	int		i;
 
 	length = 0;
 	while (src[length])
