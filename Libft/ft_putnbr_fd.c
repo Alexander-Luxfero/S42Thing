@@ -6,7 +6,7 @@
 /*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 23:39:31 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/08 09:14:21 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:21:07 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ int	ft_pow(int n, int pow)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int	len;
-	int	minus;
-	int	i;
+	int		len;
 	char	c;
 
 	if (n == -2147483648)
@@ -56,15 +54,13 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, "-2147483648", 12);
 		return ;
 	}
-    minus = 0;
-    if (n < 0)
+	if (n < 0)
 	{
 		write(fd, "-", 1);
 		n = -n;
-		minus = 1;
 	}
 	len = num_len(n);
-    while (len > 0)
+	while (len > 0)
 	{
 		c = (n / ft_pow(10, len - 1)) + '0';
 		write(fd, &c, 1);

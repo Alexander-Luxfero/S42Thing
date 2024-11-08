@@ -6,15 +6,48 @@
 /*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 23:07:08 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/08 09:14:21 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:21:07 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isprint(int c)
 {
-	if (c >= 40 && c <= 176)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }
+
+// #include <stdio.h>
+// #include <ctype.h>
+// int main(void)
+// {
+// 	int i = 0;
+//     while (i <= 47)
+//     {
+//         printf("%d", ft_isprint(i));
+//         i++;
+//     }
+// 	printf("\n");
+// 	i = 0;
+//     while (i <= 47)
+//     {
+//         printf("%d", isprint(i));
+//         i++;
+//     }
+// 	printf("\n");
+// 	i = 123;
+//     while (i <= 127)
+//     {
+//         printf("%d", ft_isprint(i));
+//         i++;
+//     }
+// 	printf("\n");
+// 	i = 123;
+//     while (i <= 127)
+//     {
+//         printf("%d", isprint(i));
+//         i++;
+//     }
+// 	printf("\n");
+// 	return (0);
+// }

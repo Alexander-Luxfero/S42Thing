@@ -6,7 +6,7 @@
 /*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 23:39:31 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/08 09:14:21 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:21:07 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	ft_putstr_fd(char *s, int fd)
 
 	i = -1;
 	while (s[++i])
-		write(fd, s[i], 1);
+		write(fd, &s[i], 1);
 }

@@ -3,8 +3,9 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = $(wildcard ./ft_*.c)
-BONUS = $(wildcard ./bonus/ft_*.c)
+SRC_ALL = $(wildcard ./ft_*.c)
+BONUS = $(wildcard ./ft_lst*.c)
+SRC = $(filter-out $(BONUS), $(SRC_ALL))
 OBJ = $(SRC:.c=.o)
 BONUS_OBJ = $(BONUS:.c=.o)
 
@@ -18,8 +19,7 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus:
-	$(NAME): $(OBJ) $(BONUS_OBJ)
+bonus: $(OBJ) $(BONUS_OBJ)
 	ar rc $(NAME) $(OBJ) $(BONUS_OBJ)
 	ranlib $(NAME)
 	chmod 777 *.a
