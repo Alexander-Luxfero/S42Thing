@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	in_set(char s, char *set)
+static size_t	in_set(char s, char *set)
 {
 	while (*set)
 	{

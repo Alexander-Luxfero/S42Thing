@@ -14,25 +14,45 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int				i;
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (d == s || len == 0)
+	if (dst == src || len == 0)
 		return (dst);
-	if (d < s)
+	d = (unsigned char *)dst;
+	s = (const unsigned char *)src;
+	if (dst < src)
 	{
-		i = -1;
-		while (++i < (int)len)
-			d[i] = s[i];
+		while (len--)
+			*d++ = *s++;
 	}
 	else
 	{
-		i = (int)len;
-		while (--i >= 0)
-			d[i] = s[i];
+		d += len;
+		s += len;
+		while (len--)
+			*(--d) = *(--s);
 	}
 	return (dst);
 }
+
+/*
+#include <stdio.h>
+int main(void) {
+    int size = 10;
+    char *dst = malloc(size);
+    char *data = malloc(size);
+
+    for (int i = 0; i < size; i++) {
+        data[i] = 'A';
+    }
+
+    ft_memmove(dst, data, size);
+    printf("After memmove, dst: %s\n", dst);
+
+    free(dst);
+    free(data);
+
+    return 0;
+}
+*/

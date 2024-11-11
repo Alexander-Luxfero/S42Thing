@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-int	num_len(int n)
+static int	num_len(int n)
 {
 	int	len;
 
@@ -27,7 +27,7 @@ int	num_len(int n)
 	return (len);
 }
 
-int	ft_pow(int n, int pow)
+static int	ft_pow(int n, int pow)
 {
 	int	out;
 
@@ -51,7 +51,7 @@ void	ft_putnbr_fd(int n, int fd)
 
 	if (n == -2147483648)
 	{
-		write(fd, "-2147483648", 12);
+		write(fd, "-2147483648", 11);
 		return ;
 	}
 	if (n < 0)
