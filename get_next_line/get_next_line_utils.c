@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:47:27 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/11 17:47:27 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/11/12 15:56:36 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,18 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_char_position(const char *s)
 {
-	if ((unsigned char)c < 0)
-		return (NULL);
-	while (*s)
+	size_t	len;
+
+	len = 0;
+	while (s[len])
 	{
-		if (*s == (unsigned char)c)
-			return ((char *)s);
-		s++;
+		if (s[len] == '\n' || s[len] == '\0')
+			return (len);
+		len++;
 	}
-	if ((unsigned char)c == '\0')
-		return ((char *)s);
-	return (NULL);
+	return (0);
 }
 
 char	*ft_strjoin_mod(char *s1, char *s2, size_t len)

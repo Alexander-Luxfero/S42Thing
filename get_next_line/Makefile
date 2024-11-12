@@ -1,7 +1,7 @@
 NAME = get_next_line.a
 
 CC = cc
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = $(wildcard ./get_next_line*.c)
 OBJ = $(SRC:.c=.o)
