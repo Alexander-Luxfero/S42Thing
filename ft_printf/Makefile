@@ -3,7 +3,7 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = $(wildcard ./*.c */*.c)
+SRC = $(wildcard ./src/*.c)
 OBJ = $(SRC:.c=.o)
 LIBC = ar rcs
 
@@ -11,7 +11,7 @@ LIBC = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	${LIBC} $(NAME) $(OBJ)
+	$(LIBC) $(NAME) $(OBJ)
 	ranlib $(NAME)
 	chmod 777 *.a
 
