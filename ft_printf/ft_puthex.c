@@ -1,57 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 23:39:31 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/08 12:21:07 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/11/13 21:18:22 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-static int	num_len(int n)
+size_t	ft_puthex(int n, int uppercase)
 {
-	int	len;
+	unsigned int	len;
+	unsigned int	division;
+	unsigned int	num;
+	char			*hex_chars;
+	size_t			out_len;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	int		len;
-	int		division;
-	char	c;
-
+	if (uppercase)
+		hex_chars = "0123456789ABCDEF";
+	else
+		hex_chars = "0123456789abcdef";
 	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n = -n;
-	}
-	len = num_len(n);
+		return (ft_putstr("80000000"));
+	num = (unsigned int)(n);
+	len = ft_num_len(num, 16);
+	out_len = (size_t)len;
 	division = 1;
 	while (--len > 0)
-		division *= 10;
+		division *= 16;
 	while (division > 0)
 	{
-		c = (n / division) + '0';
-		write(fd, &c, 1);
-		n %= division;
-		division /= 10;
+		write(1, &hex_chars[num / division], 1);
+		num %= division;
+		division /= 16;
 	}
+	return (out_len);
 }

@@ -44,54 +44,47 @@
 // 	}
 // }
 
-#include <stdio.h>
-
 char	*get_next_line(int fd)
 {
-	char		*buffer;
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 	char		*temp;
-	size_t		new_line;
-	size_t		loops;
 	ssize_t		bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(BUFFER_SIZE);
-	loops = 1;
-	bytes_read = 1;
-	while (bytes_read > 0)
+	line = NULL;
+	while (1)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (!*buffer || bytes_read <= 0)
-			return (NULL);
-		line = malloc(loops * bytes_read + 1);
-		new_line = ft_char_position(buffer);
-		printf("Buffer: %s\nReadds bites: %ld\n", buffer, bytes_read);
-		if (new_line)
-		{	
-			printf("Findet NL: %ld\n", new_line);
-			line = ft_strjoin_mod(line, buffer, new_line);
+		if (!*buffer)
+		{
+			bytes_read = read(fd, buffer, BUFFER_SIZE);
+			if (bytes_read <= 0)
+			{
+				if (bytes_read == 0)
+					return (line);
+				free(line);
+				return (NULL);
+			}
+			buffer[bytes_read] = '\0';
+		}
+		temp = ft_strchr(buffer, '\n');
+		if (temp != 0)
+		{
+			*temp = '\0';
+			line = ft_strjoin(line, buffer);
+			ft_strlcpy(buffer, temp + 1, BUFFER_SIZE);
 			return (line);
 		}
-		else
-		{
-			loops++;
-			temp = malloc(loops * bytes_read + 1);
-			temp = ft_strjoin_mod(line, buffer, bytes_read);
-		}
-		free(buffer);
-		loops++;
-		free(line);
+		line = ft_strjoin(line, buffer);
+		buffer[0] = '\0';
 	}
-	return (line);
 }
-
+/*
 #include <fcntl.h>
-
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "get_next_line.h"
 
 void	open_all(char *str)
 {
@@ -106,7 +99,7 @@ void	open_all(char *str)
 	}
 	
 	line = get_next_line(fd);
-	printf("Чтение из файла:|||%s|||\n", line);
+	printf("Чтение из файла:-->%s<--\n", line);
 	free(line);
 	
 	if (fd != 0)
@@ -127,3 +120,4 @@ int	main(void)
 	
 	return (0);
 }
+*/
