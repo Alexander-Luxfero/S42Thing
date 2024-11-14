@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 23:39:31 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/14 11:40:16 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/11/14 13:04:40 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 size_t	ft_putchar(char c)
 {
-	if (!c)
-		return (0);
 	write(1, &c, 1);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 23:39:31 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/14 11:40:16 by akuzmin          ###   ########.fr       */
+/*   Updated: 2024/11/14 14:53:51 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,24 @@ size_t	ft_putnbr(int n)
 {
 	unsigned int	len;
 	unsigned int	division;
-	char			c;
 	size_t			out_len;
 
 	if (n == -2147483648)
 		return (ft_putstr("-2147483648"));
+	len = ft_num_len(n, 10);
+	out_len = (size_t)len;
 	if (n < 0)
 	{
 		write(1, "-", 1);
+		len--;
 		n = -n;
 	}
-	len = ft_num_len(n, 10);
-	out_len = (size_t)len;
 	division = 1;
 	while (--len > 0)
 		division *= 10;
 	while (division > 0)
 	{
-		c = ((unsigned int)n / division) + '0';
-		write(1, &c, 1);
+		ft_putchar(((unsigned int)n / division) + '0');
 		n %= division;
 		division /= 10;
 	}
