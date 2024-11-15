@@ -14,18 +14,31 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
 	size_t	total_size;
 	void	*block;
-	char	*pointer;
 
 	total_size = count * size;
+	if (total_size / count != size)
+		return (NULL);
 	block = malloc(total_size);
 	if (!block)
 		return (NULL);
-	pointer = (char *)block;
-	i = 0;
-	while (i < total_size)
-		pointer[i++] = 0;
+	ft_bzero(block, total_size);
 	return (block);
 }
+
+/*
+#include <stdio.h>
+int main()
+{
+	printf("STD: %s |  %p \n", (char *)calloc((INT64_MAX) , 2),\
+	 calloc((INT64_MAX), 2));
+	printf("CTD: %s |  %p \n", (char *)ft_calloc((INT64_MAX), 2),\
+	 ft_calloc((INT64_MAX), 2));
+	printf("STD: %s |  %p \n", (char *)calloc(0, 0),\
+	 calloc(0, 0));
+	printf("CTD: %s |  %p \n", (char *)ft_calloc(0, 0),\
+	 ft_calloc(0, 0));
+	return (0);
+}
+*/

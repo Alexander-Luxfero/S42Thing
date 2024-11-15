@@ -14,7 +14,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	${LIBC} $(NAME) $(OBJ)
-	ranlib $(NAME)
 	chmod 777 *.a
 
 %.o: %.c
@@ -22,7 +21,6 @@ $(NAME): $(OBJ)
 
 bonus: $(OBJ) $(BONUS_OBJ)
 	${LIBC} $(NAME) $(OBJ) $(BONUS_OBJ)
-	ranlib $(NAME)
 	chmod 777 *.a
 
 clean:

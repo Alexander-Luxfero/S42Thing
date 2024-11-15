@@ -17,8 +17,11 @@ void	ft_bzero(void *s, size_t n)
 	size_t			i;
 	unsigned char	*str;
 
-	i = -1;
+	i = 0;
 	str = (unsigned char *)s;
-	while (n > ++i)
+	while (n > i)
+	{
 		str[i] = 0;
+		i++;
+	}
 }
