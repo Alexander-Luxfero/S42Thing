@@ -1,13 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_libft.c                                       :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 11:40:15 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:26 by akuzmin          ###   ########.fr       */
+/*   Created: 2024/11/15 11:57:35 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/11/15 12:03:10 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-https://github.com/Tripouille/libftTester.git
+
+
+#ifndef TESTS_H
+# define TESTS_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+# include "../ft_printf.h"
+
+void    run_tests_char();
+void    run_tests_decimal();
+void    run_pointer_tests();
+
+#endif
