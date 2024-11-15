@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 17:47:27 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/14 11:40:16 by akuzmin          ###   ########.fr       */
+/*   Created: 2024/11/15 23:43:26 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/11/15 23:45:53 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 
 #include "get_next_line.h"
-#include <stdlib.h>
 
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
 		if (*s == (char)c)
+		{
+			s++;
 			return ((char *)s);
+		}
 		s++;
 	}
 	return (NULL);

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akuzmin <akuzmin@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 01:13:32 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/15 11:57:34 by akuzmin          ###   ########.fr       */
+/*   Created: 2024/11/15 23:45:53 by akuzmin           #+#    #+#             */
+/*   Updated: 2024/11/15 23:45:53 by akuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
