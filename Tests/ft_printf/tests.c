@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   tests.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: akuzmin <akuzmin@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 11:57:35 by akuzmin           #+#    #+#             */
-/*   Updated: 2024/11/15 23:45:52 by akuzmin          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "tests.h"
 
 int main(int argc, char **argv)
@@ -47,6 +35,40 @@ int main(int argc, char **argv)
 	run_tests_char();
 	run_tests_decimal();
 	run_pointer_tests();
+
+
+	printf("\nstd: %u \n", -1);
+	ft_printf("custom: %u \n", -1);
+
+	printf("\nstd: %u \n", -9);
+	ft_printf("custom: %u \n", -9);
+
+	printf("\nstd: %u \n", -10);
+	ft_printf("custom: %u \n", -10);
+	
+	printf("\nstd: %u \n", -11);
+	ft_printf("custom: %u \n", -11);
+	
+	printf("\nstd: %u \n", -14);
+	ft_printf("custom: %u \n", -14);
+	
+	printf("\nstd: %u \n", -15);
+	ft_printf("custom: %u \n", -15);
+	
+	printf("\nstd: %u \n", -16);
+	ft_printf("custom: %u \n", -16);
+	
+	printf("\nstd: %u \n", -99);
+	ft_printf("custom: %u \n", -99);
+	
+	printf("\nstd: %u \n", -100);
+	ft_printf("custom: %u \n", -100);
+
+	printf("\nstd: %u \n", -101);
+	ft_printf("custom: %u \n", -101);
+
+	printf("\nstd: %u \n", INT_MIN);
+	ft_printf("custom: %u \n", INT_MIN);
 
     return 0;
 }

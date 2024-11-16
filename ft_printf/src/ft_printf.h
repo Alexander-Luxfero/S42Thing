@@ -23,6 +23,6 @@ size_t			ft_putnbr(int n);
 size_t			ft_putstr(char *s);
 size_t			ft_print_pointer(void *ptr);
 size_t			ft_putundec(unsigned int n);
-size_t			ft_puthex(int n, int uppercase);
+size_t	ft_putbase(unsigned int n, int uppercase, int baselen);
 
 #endif

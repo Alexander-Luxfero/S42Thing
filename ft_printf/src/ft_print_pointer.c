@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
 static size_t	ft_use_that_shit(char *str)
@@ -18,23 +17,17 @@ static size_t	ft_use_that_shit(char *str)
 	size_t	len;
 	size_t	i;
 
-	i = 0;
+	i = 2;
 	len = 0;
-	while (i < 2)
-	{
-		len += ft_putchar(str[i]);
+	len += ft_putchar(str[0]);
+	len += ft_putchar(str[1]);
+	while (str[i] == '0' && str[i + 1] != '\0')
 		i++;
-	}
-	while (str[i])
-	{
-		while (str[i] == '0' && len == 2)
-			i++;
-		len += ft_putchar(str[i]);
-		i++;
-	}
+	len += ft_putstr(&str[i]);
 	return (len);
 }
 
+// for linus (nil) for macOS 0x0
 size_t	ft_print_pointer(void *ptr)
 {
 	unsigned long	address;
@@ -47,8 +40,6 @@ size_t	ft_print_pointer(void *ptr)
 	hex_address[18] = '\0';
 	address = (unsigned long)ptr;
 	base16 = "0123456789abcdef";
-	if (ptr == (NULL))
-		return (ft_putstr("(nil)"));
 	i = 17;
 	hex_address[0] = '0';
 	hex_address[1] = 'x';

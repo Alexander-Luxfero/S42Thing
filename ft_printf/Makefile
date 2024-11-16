@@ -12,7 +12,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(LIBC) $(NAME) $(OBJ)
-	ranlib $(NAME)
 	chmod 777 *.a
 
 %.o: %.c
